@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Lateef&display=swap');
+
+/* src/Table.css */
+.main-container {
+  padding: 0.5rem;
+  font-family: 'Lateef', cursive;
+}
+
+.booking-status {
+  text-align: left;
+  font-size: 25px;
+}
+
+.table-container {
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: auto;
+  border-radius: 8px;
+  font-family: 'Lateef', cursive;
+}
+
+.search-container {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: 'Lateef', cursive;
+  font-size: 1.2rem;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.table-container th,
+.table-container td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  font-family: 'Lateef', cursive;
+  font-size: 1.2rem;
+}
+
+.table-container th {
+  background: #f4f4f4;
+  font-weight: bold;
+}
+
+.table-container select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Lateef', cursive;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.table-container .actions {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1.5rem;
+  width: 65%;
+  height: 50px;
+  text-align: center;
+}
+
+.table-container .actions i {
+  cursor: pointer;
+  color: #007bff;
+  font-size: 1.5rem;
+}
+
+.table-container .actions i.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.table-container .actions i:hover {
+  color: #0056b3;
+}
+
+.table-container .actions i.disabled:hover {
+  color: #ccc;
+}
+
+/* Status colors */
+.pending {
+  background-color: #ffa500;
+  text-align: center;
+}
+
+.approved {
+  background-color: #28a745;
+  text-align: center;
+}
+
+.rejected {
+  background-color: #dc3545;
+  text-align: center;
+}
+
+
+/* Remarks Modal Styles */
+.remarks-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remarks-modal .modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 700px; /* Increased max-width */
+  text-align: center;
+}
+
+.remarks-modal .modal-content h2 {
+  margin-bottom: 1rem;
+}
+
+.remarks-modal .modal-content textarea {
+  width: 300px; /* Increased width */
+  height: 200px; /* Increased height */
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Lateef', cursive;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+
+.remarks-modal .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.save-button,
+.cancel-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Lateef', cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.save-button {
+  background: #28a745;
+  color: #fff;
+}
+
+.cancel-button {
+  background: #dc3545;
+  color: #fff;
+}

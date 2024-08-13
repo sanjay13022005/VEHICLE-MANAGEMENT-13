@@ -1,0 +1,47 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color:white;
+ 
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  background-color: #cfd5dd;
+}
+
+.sidebar {
+  width: 150px;
+  background-color:#cfd5dd;
+  padding: 1rem;
+  border-right:black ;
+  border: black;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+li ul {
+  margin-left: 1rem;
+}
+
