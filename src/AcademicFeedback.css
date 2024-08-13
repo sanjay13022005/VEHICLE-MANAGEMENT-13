@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Lateef&display=swap');
+
+.academic-feedback {
+  background-color: white;
+  padding: 2rem;
+  max-width: 100%; /* Adjusted maximum width */
+ 
+  margin: auto;
+  border: 1px solid #cfd5dd;
+  border-radius: 12px;
+  color: #393b38;
+  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+}
+
+.academic-feedback h2 {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  color: #393b38;
+  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+  font-size: 2.5rem; /* Increased font size */
+  font-weight: bold; /* Made text bold */
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 1rem; /* Added gap for equal spacing */
+}
+
+.form-group label {
+  margin: 0; /* Remove margin to align labels evenly */
+  font-weight: bold;
+  color: #393b38;
+  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+  font-size: 1.5rem; /* Increased font size */
+  width: auto;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem; /* Increased padding for better readability */
+  border: 1px solid #393b38; /* Consistent border for all form elements */
+  border-radius: 8px;
+  color: #393b38;
+  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+  font-size: 1.2rem; /* Increased font size */
+}
+
+
+.form-group input[type="file"] {
+  border: none;
+  color: blue;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group.declaration-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Added gap between checkbox and label */
+}
+
+.form-group.declaration-group label {
+  font-weight: bold; /* Made text bold */
+  white-space: nowrap;
+  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+  font-size: 1.9rem; /* Increased font size */
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  gap: 10px; /* Equal spacing between buttons */
+}
+
+.form-buttons button {
+  padding: 0.75rem 1.5rem; /* Increased padding for better readability */
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: '', cursive; /* Changed font to Lateef */
+  font-size: 1.2rem; /* Increased font size */
+  font-weight: bold; /* Made text bold */
+}
+
+.form-buttons button[type="button"] {
+  background-color: #6c757d;
+}
+
+.form-buttons button:hover {
+  opacity: 0.8;
+}
+.error {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}

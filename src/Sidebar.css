@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Lateef&display=swap');
+
+.sidebar {
+  background-color: #cfd5dd;
+  padding: 1rem;
+  width: 200px; /* Increased width for better spacing */
+  height: 100%; /* Ensures sidebar takes full height */
+  overflow-y: auto; /* Enables scrolling if content exceeds height */
+  border-right: 1px solid #ccc; /* Adds a border on the right side */
+  font-family: 'Lateef', cursive; /* Set font to Lateef */
+  font-size: 1.5rem; /* Increased font size */
+}
+
+.sidebar ul {
+  padding: 0;
+}
+
+.sidebar li {
+  list-style: none;
+  margin: 0.75rem 0; /* Increased margin for better spacing */
+  font-size: 1.5rem; /* Increased font size for list items */
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  padding: 0.75rem 0; /* Increased padding for better spacing */
+  font-size: 1.5rem; /* Increased font size for links */
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+  color: #333;
+}
+
+.sidebar-submenu {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem; /* Increased font size for submenu */
+}
+
+.sidebar-submenu svg {
+  margin-right: 0.75rem; /* Increased margin for better spacing */
+}
+
+.submenu {
+  padding-left: 1.5rem; /* Increased padding for better indent */
+}

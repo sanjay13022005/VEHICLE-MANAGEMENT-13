@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Lateef&display=swap');
+
+/* src/ViewModal.css */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem; /* Increased padding */
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem; /* Increased padding */
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 2rem; /* Increased font size */
+  font-weight: bold; /* Made text bold */
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content ul li {
+  margin-bottom: 1rem; /* Increased spacing */
+  font-size: 1.5rem; /* Increased font size */
+}
+
+.modal-content ul li strong {
+  margin-right: 0.5rem;
+  font-size: 1.5rem; /* Increased font size */
+}
+
+.modal-content button {
+  margin-top: 1.5rem; /* Increased spacing */
+  padding: 0.75rem 1.5rem; /* Increased padding */
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1.5rem; /* Increased font size */
+  font-weight: bold; /* Made text bold */
+  margin-right: 1rem; /* Increased spacing */
+}
+
+.modal-content button:hover {
+  opacity: 0.8;
+}
