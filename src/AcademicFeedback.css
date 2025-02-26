@@ -1,95 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Lateef&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lateef:wght@400;700&display=swap');
 
 .academic-feedback {
-  background-color: white;
+  background-color: #f8f9fa;
   padding: 2rem;
-  max-width: 100%; /* Adjusted maximum width */
- 
-  margin: auto;
-  border: 1px solid #cfd5dd;
-  border-radius: 12px;
-  color: #393b38;
-  font-family: 'Lateef', cursive; /* Changed font to Lateef */
+  max-width: 1400px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Lateef', cursive;
 }
 
 .academic-feedback h2 {
   margin-bottom: 1.5rem;
-  text-align: left;
-  color: #393b38;
-  font-family: 'Lateef', cursive; /* Changed font to Lateef */
-  font-size: 2.5rem; /* Increased font size */
-  font-weight: bold; /* Made text bold */
+  text-align: center;
+  color: #333;
+  font-size: 2.2rem;
+  font-weight: 700; /* Bold */
 }
 
 .form-group {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  gap: 1rem; /* Added gap for equal spacing */
 }
 
 .form-group label {
-  margin: 0; /* Remove margin to align labels evenly */
-  font-weight: bold;
-  color: #393b38;
-  font-family: 'Lateef', cursive; /* Changed font to Lateef */
-  font-size: 1.5rem; /* Increased font size */
-  width: auto;
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  font-weight: 700; /* Bold */
+  
 }
 
 .form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem; /* Increased padding for better readability */
-  border: 1px solid #393b38; /* Consistent border for all form elements */
-  border-radius: 8px;
-  color: #393b38;
-  font-family: 'Lateef', cursive; /* Changed font to Lateef */
-  font-size: 1.2rem; /* Increased font size */
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  font-family: 'Lateef', cursive;
+  font-weight: 400;
 }
 
-
-.form-group input[type="file"] {
-  border: none;
-  color: blue;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
 }
 
-.form-group.full-width {
-  grid-column: span 2;
+.form-group .info {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
 }
 
 .form-group.declaration-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Added gap between checkbox and label */
 }
 
 .form-group.declaration-group label {
-  font-weight: bold; /* Made text bold */
-  white-space: nowrap;
-  font-family: 'Lateef', cursive; /* Changed font to Lateef */
-  font-size: 1.9rem; /* Increased font size */
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  font-weight: 700; /* Bold */
+  color: #dc3545;
 }
 
 .form-buttons {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1.5rem;
-  gap: 10px; /* Equal spacing between buttons */
+  gap: 15px;
 }
 
 .form-buttons button {
-  padding: 0.75rem 1.5rem; /* Increased padding for better readability */
+  padding: 0.75rem 1.5rem;
   border: none;
+  border-radius: 5px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 4px;
-  font-family: '', cursive; /* Changed font to Lateef */
-  font-size: 1.2rem; /* Increased font size */
-  font-weight: bold; /* Made text bold */
+  transition: background-color 0.3s ease;
+  font-family: 'Lateef', cursive;
+  font-weight: 700; /* Bold */
 }
 
 .form-buttons button[type="button"] {
@@ -97,10 +91,17 @@
 }
 
 .form-buttons button:hover {
-  opacity: 0.8;
+  background-color: #0056b3;
 }
+
 .error {
   color: #dc3545;
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
+.form-group option {
+  color: #555;
+}
+
+
+

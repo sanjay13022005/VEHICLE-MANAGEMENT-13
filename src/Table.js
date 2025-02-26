@@ -3,92 +3,37 @@ import './Table.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import EditModal from './EditModal';
 import ViewModal from './ViewModal';
+import axios from 'axios';
 
-const Table = () => {
+const Table = ({ addNotification }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDriver, setSelectedDriver] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isRemarksModalOpen, setIsRemarksModalOpen] = useState(false);
-  const [remarks, setRemarks] = useState('-');
+  const [remarks, setRemarks] = useState('');
+  const [vehicle, setVehicle] = useState([]);
 
-  const initialData = [
-    {
-      id: 1,
-      facultyname: 'Sanjay G ASP II',
-      name: 'Sanjay G ASP II',
-      licenseNo: 'AB123456',
-      driverNo: 'D78910',
-      carName: 'Bolero',
-      carNo: 'XYZ-1234',
-      purpose: 'Company Visit',
-      cityName: 'Coimbatore',
-      vehicleType: 'Bolero',
-      memberCount: 3,
-      fromDate: '5/7/2024',
-      returnDate: '5/7/2024',
-      
-      provisionallyApproved: 'Pending',
-      remarks: '-'
-    },
-    {
-      id: 2,
-      facultyname: 'John Doe',
-      name: 'John Doe',
-      licenseNo: 'XY789012',
-      driverNo: 'D34567',
-      carName: 'Toyota Camry',
-      carNo: 'ABC-9876',
-      purpose: 'Research Conference',
-      cityName: 'Chennai',
-      vehicleType: 'SUV',
-      memberCount: 2,
-      fromDate: '6/7/2024',
-      returnDate: '7/7/2024',
-     
-      provisionallyApproved: 'Pending',
-      remarks: '-'
-    },
-    {
-      id: 3,
-      facultyname: 'John Doe',
-      name: 'John Doe',
-      licenseNo: 'XY789012',
-      driverNo: 'D34567',
-      carName: 'Toyota Camry',
-      carNo: 'ABC-9876',
-      purpose: 'Research Conference',
-      cityName: 'Chennai',
-      vehicleType: 'SUV',
-      memberCount: 2,
-      fromDate: '6/7/2024',
-      returnDate: '7/7/2024',
-     
-      provisionallyApproved: 'Pending',
-      remarks: '-'
-    },
-  ];
-
-  const [driverData, setDriverData] = useState(() => {
-    const savedData = localStorage.getItem('driverData');
-    return savedData ? JSON.parse(savedData) : initialData;
-  });
-
+  // Fetch vehicle data from the backend
   useEffect(() => {
-    localStorage.setItem('driverData', JSON.stringify(driverData));
-  }, [driverData]);
+    async function getAllVehicles() {
+      try {
+        const result = await axios.get('http://localhost:4000/api/vehicle/getall');
+        setVehicle(result.data);
+      } catch (error) {
+        console.error('Error fetching vehicles:', error);
+      }
+    }
+    getAllVehicles();
+  }, []);
 
-  const filteredData = driverData.filter(row =>
-    Object.values(row).some(
-      value => value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
-
+  // Handle View button click
   const handleView = (row) => {
     setSelectedDriver(row);
     setIsViewModalOpen(true);
   };
 
+  // Handle Edit button click
   const handleEdit = (row) => {
     setSelectedDriver(row);
     setIsEditModalOpen(true);
@@ -106,22 +51,30 @@ const Table = () => {
 
   const closeRemarksModal = () => {
     setIsRemarksModalOpen(false);
-    setRemarks('-');
+    setRemarks('');
     setSelectedDriver(null);
   };
 
   const saveDriver = (updatedDriver) => {
-    setDriverData(driverData.map(driver =>
-      driver.id === updatedDriver.id ? updatedDriver : driver
+    setVehicle(vehicle.map(driver =>
+      driver.id === updatedDriver.id ? { ...driver, ...updatedDriver } : driver
     ));
   };
 
-  const handleApprovalChange = (id, status, remarks = '-') => {
-    setDriverData(driverData.map(driver =>
+  // Handle approval change and update database
+  const handleApprovalChange = async (id, status, remarks = '-') => {
+    setVehicle(vehicle.map(driver =>
       driver.id === id ? { ...driver, provisionallyApproved: status, remarks } : driver
     ));
+
+    if (status === 'Rejected') {
+      addNotification(`Booking ID: ${id} was rejected. Remarks: ${remarks}`);
+    } else if (status === 'Approved') {
+      addNotification(`Booking ID: ${id} was approved.`);
+    }
   };
 
+  // Determine row status class
   const getStatusClass = (status) => {
     switch (status) {
       case 'Approved':
@@ -133,12 +86,20 @@ const Table = () => {
     }
   };
 
+  // Save remarks and reject booking
   const handleRemarksSave = () => {
     if (selectedDriver) {
       handleApprovalChange(selectedDriver.id, 'Rejected', remarks);
       closeRemarksModal();
     }
   };
+
+  // Filter data based on search term
+  const filteredData = vehicle.filter(row =>
+    Object.values(row).some(
+      value => value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   return (
     <div className="main-container">
@@ -165,7 +126,6 @@ const Table = () => {
               <th>Member Count</th>
               <th>From Date</th>
               <th>Return Date</th>
-             
               <th>Provisionally Approved</th>
               <th>Remarks</th>
               <th>Actions</th>
@@ -173,16 +133,15 @@ const Table = () => {
           </thead>
           <tbody>
             {filteredData.map((row, index) => (
-              <tr key={index}>
-                <td>{row.id}</td>
-                <td>{row.facultyname}</td>
+              <tr key={row.id || index}> {/* Use a unique key */}
+                <td>{index + 1}</td>
+                <td>{row.fname}</td>
                 <td>{row.purpose}</td>
-                <td>{row.cityName}</td>
-                <td>{row.vehicleType}</td>
-                <td>{row.memberCount}</td>
-                <td>{row.fromDate}</td>
-                <td>{row.returnDate}</td>
-                
+                <td>{row.city}</td>
+                <td>{row.Type}</td>
+                <td>{row.count}</td>
+                <td>{row.fdata}</td>
+                <td>{row.rdata}</td>
                 <td>
                   <select
                     className={getStatusClass(row.provisionallyApproved)}
@@ -217,17 +176,21 @@ const Table = () => {
           </tbody>
         </table>
       </div>
+
       <EditModal
         isOpen={isEditModalOpen}
         onRequestClose={closeEditModal}
         driver={selectedDriver}
         onSave={saveDriver}
+        vehicalData={filteredData}
       />
+
       <ViewModal
         isOpen={isViewModalOpen}
         onRequestClose={closeViewModal}
-        driver={selectedDriver}
+        driverId={selectedDriver ? selectedDriver.id : null}
       />
+
       {isRemarksModalOpen && (
         <div className="remarks-modal">
           <div className="modal-content">

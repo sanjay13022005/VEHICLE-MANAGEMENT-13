@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './Header.css';
+import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
-  const [showNotificationPopup, setShowNotificationPopup] = useState(false);
+const Header = ({ notifications, toggleNotificationPopup, showNotificationPopup,setCount }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate()
 
+  // Handle logout function integrated into the component
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to log out?')) {
       // Redirect to sign-up page
-      window.location.href = 'http://localhost:3001/';
+      localStorage.removeItem("token")
+      // setToken(null)
+      
+      navigate("/login")
     }
-  };
-
-  const toggleNotificationPopup = () => {
-    setShowNotificationPopup(!showNotificationPopup);
+    setCount(1)
   };
 
   return (
@@ -22,7 +26,12 @@ const Header = () => {
       <div className="header-left">
         <h1>BIT INFORMATION PORTAL</h1>
         <div className="search-bar">
-          <input type="text" placeholder="Press / to search" />
+          <input
+            type="text"
+            placeholder="Press / to search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <button type="submit">
             <FontAwesomeIcon icon={faSearch} />
           </button>
@@ -33,7 +42,13 @@ const Header = () => {
           <FontAwesomeIcon icon={faBell} />
           {showNotificationPopup && (
             <div className="notification-popup">
-              <p>No new notifications</p>
+              {notifications.length > 0 ? (
+                notifications.map((notification, index) => (
+                  <p key={index}>{notification}</p>
+                ))
+              ) : (
+                <p>No new notifications</p>
+              )}
             </div>
           )}
         </div>
